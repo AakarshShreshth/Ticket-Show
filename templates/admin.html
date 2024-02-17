@@ -1,0 +1,101 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <h2>Admin Dashboard</h2>
+    <hr />
+
+    <h3>Venues</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Place</th>
+                    <th>Location</th>
+                    <th>Capacity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venue in venues %}
+                <tr>
+                    <td>{{ venue.name }}</td>
+                    <td>{{ venue.place }}</td>
+                    <td>{{ venue.location }}</td>
+                    <td>{{ venue.capacity }}</td>
+                    <td>
+                        <div>
+                            <a
+                                href="{{ url_for('edit_venue', id=venue.id) }}"
+                                class="btn btn-primary btn-sm"
+                                >Edit</a
+                            >
+                            <a
+                                href="{{ url_for('delete_venue', id=venue.id) }}"
+                                class="btn btn-danger btn-sm"
+                                >Delete</a
+                            >
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a class="btn btn-primary" href="{{ url_for('add_venue') }}"
+            >Add Venue</a
+        >
+    </div>
+
+    <br />
+
+    <h3>Shows</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rating</th>
+                    <th>Tags</th>
+                    <th>Timing</th>
+                    <th>Ticket Price (₹)</th>
+                    <th>Venue</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for show in shows %}
+                <tr>
+                    <td>{{ show.name }}</td>
+                    <td>{{ show.rating }}</td>
+                    <td>{{ show.tags }}</td>
+                    <td>{{ show.timing }}</td>
+                    <td>{{ show.ticket_price }}</td>
+                    <td>
+                        {{ show.Venue.name }}, {{ show.Venue.place }}, {{
+                        show.Venue.location }}
+                    </td>
+                    <td>
+                        <div>
+                            <a
+                                href="{{ url_for('edit_show', id=show.id) }}"
+                                class="btn btn-primary btn-sm"
+                                >Edit</a
+                            >
+                            <a
+                                href="{{ url_for('delete_show', id=show.id) }}"
+                                class="btn btn-danger btn-sm"
+                                >Delete</a
+                            >
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a class="btn btn-primary" href="{{ url_for('add_show') }}">Add Show</a>
+    </div>
+</div>
+{% endblock %}

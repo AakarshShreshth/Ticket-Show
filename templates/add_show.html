@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h3 class="text-center">Add Show</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="rating"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Timing</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="timing"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Tags</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="tags"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Ticket Price</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="ticket_price"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Venue ID</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="venue_id"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-block"
+                            >
+                                Add Show
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

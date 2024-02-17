@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <h1 align="center">{{ current_user.username }}</h1>
+    <div>
+        <br />
+        <h3>Your Bookings</h3>
+        <hr />
+        <div class="row row-cols-4">
+            {% for ticket in tickets %}
+            <div class="col">
+                <div
+                    class="card border-secondary mb-3"
+                    style="max-width: 18rem"
+                >
+                    <div class="card-header text-center">
+                        <h2 class="card-title">{{ ticket.Show.name }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <h5>
+                            <strong>Timing:</strong> {{ ticket.Show.timing }}
+                        </h5>
+                        <p><strong>Tags:</strong> {{ ticket.Show.tags }}</p>
+                        <p><strong>Quantity:</strong> {{ ticket.quantity }}</p>
+                        <p>
+                            <strong>Venue:</strong> {{ ticket.Show.Venue.name }}
+                            - {{ ticket.Show.Venue.place }}
+                        </p>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <i>Ticket ID: {{ ticket.id }}</i>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

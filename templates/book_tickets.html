@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+        <h2>Book Tickets</h2>
+        <hr />
+        <div class="card mt-5">
+            <div class="card-header">
+                <h1 class="text-center">{{ show.name }}</h1>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">{{ show.Venue.name }}</h3>
+                <h5 class="card-subtitle mb-2 text-body-secondary">
+                    {{ show.Venue.place }}, {{ show.Venue.location }}
+                </h5>
+                <h4 class="card-text"><b>Timing:</b> {{ show.timing }}</h4>
+                <h5 class="card-text">
+                    <b>Rating:</b> {{ show.rating }} / 5.0
+                </h5>
+                <h5 class="card-text"><b>Tags:</b> {{ show.tags }}</h5>
+                <h5 class="card-text">
+                    <b>Price:</b> ₹{{ show.ticket_price }} per ticket
+                </h5>
+                <h5 class="card-text">
+                    <b>Available Tickets:</b> {{ show.available_tickets() }}
+                </h5>
+            </div>
+            <div class="card-footer">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="quantity"><h5>Quantity</h5></label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="quantity"
+                            name="quantity"
+                            placeholder="How many tickets?"
+                            min="1"
+                            max="{{ show.available_tickets() }}"
+                            required
+                        />
+                    </div>
+                    <div style="margin-top: 0.5rem">
+                        <button type="submit" class="btn btn-primary">
+                            Book
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>All Shows</h1>
+  <hr>
+
+  <form method="POST">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" id="search_query" name="search_query" placeholder="Search Shows by Name">
+    <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+  </form>
+<br>
+
+  {% if shows %}
+<div class="row row-cols-4">
+    {% for show in shows %}
+    <div class="col">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h3 class="card-title">{{ show.name }}</h3>
+          <h6 class="card-subtitle mb-2 text-muted">{{ show.Venue.name }}, {{ show.Venue.location }}</h6>
+            <p></p>
+          <p class="card-text"><b>Timing:</b> {{ show.timing }}</p>
+          <p class="card-text"><b>Tags:</b> {{ show.tags }}</p>
+          <p class="card-text"><b>Ticket Price:</b> ₹{{ show.ticket_price }}</p>
+          <a href="{{ url_for('show_details', id=show.id) }}" class="card-link"><buton class="btn btn-primary btn-sm">Details</a>
+          {% if current_user.is_authenticated %}
+            {% if show.available_tickets() %}
+            <a href="{{ url_for('book_tickets', id=show.id) }}" class="card-link"><button class="btn btn-primary btn-sm">Book Tickets</button></a>
+            {% else %}
+            <a href="#" class="card-link"><button class="btn btn-primary btn-sm" disabled>Housefull</button></a>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+      </div>
+    {% endfor %}
+      </div>
+  {% else %}
+    <p>No shows found.</p>
+  {% endif %}
+{% endblock %}

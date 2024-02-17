@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h3 class="text-center">Edit Venue</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                required
+                                value="{{ venue.name }}"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Place</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="place"
+                                required
+                                value="{{ venue.place }}"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="location"
+                                required
+                                value="{{ venue.location }}"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Capacity</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="capacity"
+                                required
+                                value="{{ venue.capacity }}"
+                            />
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-block"
+                            >
+                                Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

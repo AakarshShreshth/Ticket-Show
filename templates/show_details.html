@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h1 class="card-title">{{ show.name }}</h1>
+                    <h5 class="card-subtitle">
+                        <strong>Timing:</strong> {{ show.timing }}
+                    </h5>
+                    <p></p>
+                    <p>
+                        <strong>Rating:</strong> {{ show.rating }} / 5.0 <br />
+                        <strong>Tags:</strong> {{ show.tags }}<br />
+                        <strong>Ticket price:</strong> ₹ {{ show.ticket_price
+                        }}<br />
+                        <strong>Venue:</strong> {{ show.Venue.name }}, {{
+                        show.Venue.place }}, {{ show.Venue.location }}<br />
+                        <strong>Tickets Available:</strong> {{
+                        show.available_tickets() }}
+                    </p>
+
+                    {% if current_user.is_authenticated %} {% if
+                    show.available_tickets() %}
+                    <a
+                        class="btn btn-primary"
+                        href="{{ url_for('book_tickets', id=show.id) }}"
+                        >Book Tickets</a
+                    >
+                    {% else %}
+                    <a class="card-link" href="#"
+                        ><button class="btn btn-primary" disabled>
+                            Housefull
+                        </button></a
+                    >
+                    {% endif %} {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

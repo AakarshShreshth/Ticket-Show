@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h3 class="text-center">Sign Up</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="username"
+                                required
+                            />
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                required
+                            />
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="password1"
+                                required
+                            />
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="password2"
+                                required
+                            />
+                        </div>
+                        <br />
+                        <div class="form-group" align="center">
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-block"
+                            >
+                                Sign Up
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

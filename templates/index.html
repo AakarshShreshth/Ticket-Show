@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Latest Shows</h1>
+<hr />
+<form method="POST">
+    <div class="input-group mb-3">
+        <input
+            type="text"
+            name="location"
+            class="form-control"
+            placeholder="Search for a location"
+        />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+{% if location %}
+<h3>Results for "{{ location }}"</h3>
+{% endif %} {% for venue in dashboard %}
+<div class="card">
+    <div class="card-header">
+        <h2>{{ venue.name }}</h2>
+        <h6>{{ venue.place }}, {{ venue.location }}</h6>
+    </div>
+    <div class="card-body">
+        {% if dashboard[venue] %}
+        <div class="row row-cols-4">
+            {% for show in dashboard[venue] %}
+            <div class="col">
+                <div class="card" style="width: 18rem">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ show.name }}</h4>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                            <b>{{ show.timing }}</b>
+                        </h6>
+                        <p class="card-text">
+                            <b>{{ show.rating }}</b> / 5<br />
+                            {{ show.tags }}<br />
+                            ₹ {{ show.ticket_price }}
+                        </p>
+                        <a
+                            href="{{ url_for('show_details', id=show.id) }}"
+                            class="btn btn-primary"
+                            >View Details</a
+                        >
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h5>No shows currently available at this venue.</h5>
+        {% endif %}
+    </div>
+</div>
+<br />
+{% endfor %} {% endblock %}
